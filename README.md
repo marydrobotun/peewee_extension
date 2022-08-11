@@ -1,4 +1,4 @@
-# **Peewee-MySQL-Extension**
+# **Peewee-Extension**
 ## Пакет для работы с MySQL через peewee
 
 
@@ -11,7 +11,7 @@
 
 ## Установка
 ```sh
-pip install peewee-mysql-extension
+pip install -e peewee-extension
 ```
  
 
