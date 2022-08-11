@@ -1,0 +1,17 @@
+from playhouse.migrate import MySQLMigrator, migrate
+from peewee import DatabaseProxy
+from playhouse.db_url import connect
+
+
+db = DatabaseProxy()
+
+from peewee import Model
+
+migrator = MySQLMigrator(db)
+
+
+def apply():
+    pass
+
+def roll_back():
+    pass

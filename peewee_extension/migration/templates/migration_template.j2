@@ -1,0 +1,32 @@
+from playhouse.migrate import MySQLMigrator, migrate
+from peewee import DatabaseProxy, SQL
+{% if peewee_fields %}from peewee import {{peewee_fields}}{% endif %}
+{% if core_fields %}from peewee_extension.core import {{core_fields}}{% endif %}
+from playhouse.db_url import connect
+from peewee import Model
+db = DatabaseProxy()
+{% if models_to_add or models_to_delete %}
+
+class BaseModel(Model):
+    class Meta:
+        database = db
+{% endif %}
+
+{% if models_to_add %}{{models_to_add}}{% endif %}
+{% if models_to_delete %}{{models_to_delete}}{% endif %}
+migrator = MySQLMigrator(db)
+
+
+def apply():
+    {% if tables_to_delete %}db.drop_tables([{{tables_to_delete}}]){% endif %}
+    {% if tables_to_add %}db.create_tables([{{tables_to_add}}]){% endif %}
+    migrate(
+{{migrations}}
+    )
+
+def roll_back():
+    {% if tables_to_delete %}db.create_tables([{{tables_to_delete}}]){% endif %}
+    {% if tables_to_add %}db.drop_tables([{{tables_to_add}}]){% endif %}
+    migrate(
+{{reversed_migrations}}
+    )

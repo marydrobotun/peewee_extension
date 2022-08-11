@@ -1,0 +1,5 @@
+peewee==3.14.*
+mysqlclient==2.1.*
+termcolor==1.1.*
+jinja2==3.0.1
+ConfigArgParse~=1.5.1

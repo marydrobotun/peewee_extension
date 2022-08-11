@@ -1,0 +1,7 @@
+include README.md
+include CHANGELOG.md
+include requirements.txt
+include peewee_extension/config_stub.yml
+include peewee_extension/migration/templates/empty_migration.j2
+include peewee_extension/migration/templates/migration_template.j2
+include peewee_extension/migration/templates/table_model_template.j2

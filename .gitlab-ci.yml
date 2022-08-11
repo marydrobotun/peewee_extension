@@ -1,0 +1,18 @@
+stages:
+  - deploy
+
+upload_package:
+  stage: deploy
+  tags:
+    - py3
+  script:
+    - yum -y install git
+    - pip install check-manifest==0.47
+    - pip install devpi-client
+    - pip install -U setuptools
+    - devpi use http://pypi.web-tech.moex.com/webtech/prod/
+    - devpi login webtech --password $DevPiPass
+    - devpi upload
+  only:
+    refs:
+      - master

@@ -1,0 +1,11 @@
+db_url: mysql://user:password@host:port/db
+#db_url: mysql://mary:monosusuk@127.0.0.1:3306/testdb
+#filepath: ''
+models: models
+
+#only_tables:
+#  - iss_queries
+#  - iss_statements
+#  - iss_statements_arguments
+#  - iss_url_regexp_args
+#  - iss_queries_iss_statements
